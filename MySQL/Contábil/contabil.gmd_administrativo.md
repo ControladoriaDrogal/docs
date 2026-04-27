@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-A view `contabil.gmd_administrativo` consolida as despesas administrativas realizadas a partir da tabela `contabil.gmd`, separando os lançamentos conforme regras específicas de pacote, conta, filial, centro de custo e fornecedor.
+A view `contabil.gmd_administrativo` consolida as despesas administrativas realizadas a partir da tabela `contabil.gmd` e `contabil.gmd_orcamento`, separando os lançamentos conforme regras específicas de pacote, conta, filial, centro de custo e fornecedor.
 
 A composição da base ocorre no CTE `queryset`, com blocos unidos por `UNION`.
 
@@ -12,6 +12,7 @@ A composição da base ocorre no CTE `queryset`, com blocos unidos por `UNION`.
 
 ```sql
 contabil.gmd g
+contabil.gmd_orcamento g
 ```
 
 Tabela auxiliar de conta/pacote:
@@ -209,7 +210,7 @@ Pacotes excluídos:
 Contas excluídas:
 
 ```sql
-511,515,498,789,932,933
+511,515,498,789,932,933, 9005
 ```
 
 Também exclui:
