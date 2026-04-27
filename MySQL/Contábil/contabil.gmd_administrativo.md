@@ -1,6 +1,8 @@
-# Documentação — `contabil.gmd_administrativo`
+# [Documentação Controladoria](../../README.md)
 
-## Objetivo
+## Documentação — `contabil.gmd_administrativo`
+
+### Objetivo
 
 A view `contabil.gmd_administrativo` consolida as despesas administrativas realizadas a partir da tabela `contabil.gmd` e `contabil.gmd_orcamento`, separando os lançamentos conforme regras específicas de pacote, conta, filial, centro de custo e fornecedor.
 
@@ -8,7 +10,7 @@ A composição da base ocorre no CTE `queryset`, com blocos unidos por `UNION`.
 
 ---
 
-## Fonte principal
+### Fonte principal
 
 ```sql
 contabil.gmd g
@@ -29,7 +31,7 @@ g.conta = ct.conta
 
 ---
 
-## Regra de Centro de Custo Administrativo
+### Regra de Centro de Custo Administrativo
 
 Alguns blocos usam:
 
@@ -48,9 +50,9 @@ g.cc in (
 
 ---
 
-# Blocos de composição
+## Blocos de composição
 
-## Aluguel, Água/Energia, Internet/Telefone e Material de Informática
+### Aluguel, Água/Energia, Internet/Telefone e Material de Informática
 
 Pacotes: `50, 52, 59`
 
@@ -58,7 +60,7 @@ Conta: `789`
 
 Filial: `196`
 
-### Resumo
+#### Resumo
 
 | Critério        | Valores    |
 | --------------- | ---------- |
@@ -68,7 +70,7 @@ Filial: `196`
 
 ---
 
-## TI e Locação de Bens
+### TI e Locação de Bens
 
 Pacote: `66`
 
@@ -78,7 +80,7 @@ Contas excluídas: `789, 927`
 
 Filiais: `196, 99`
 
-### Resumo
+#### Resumo
 
 | Critério         | Valores  |
 | ---------------- | -------- |
@@ -89,7 +91,7 @@ Filiais: `196, 99`
 
 ---
 
-## Engenharia
+### Engenharia
 
 Pacote: `57`
 
@@ -97,7 +99,7 @@ Filiais: `196, 99`
 
 Centro de custo: `Regra ADM`
 
-### Resumo
+#### Resumo
 
 | Critério        | Valores   |
 | --------------- | --------- |
@@ -107,11 +109,11 @@ Centro de custo: `Regra ADM`
 
 ---
 
-## Financeiro Jurus
+### Financeiro Jurus
 
 Pacote: `502`
 
-### Resumo
+#### Resumo
 
 | Critério | Valores |
 | -------- | ------- |
@@ -120,13 +122,13 @@ Pacote: `502`
 
 ---
 
-## Marketing
+### Marketing
 
 Pacote: `60`
 
 CC excluídos: `108,117,172`
 
-### Resumo
+#### Resumo
 
 | Critério     | Valores     |
 | ------------ | ----------- |
@@ -135,7 +137,7 @@ CC excluídos: `108,117,172`
 
 ---
 
-## RH, Suprimentos e Multas
+### RH, Suprimentos e Multas
 
 Pacotes: `62,621,65,651`
 
@@ -145,7 +147,7 @@ Filial: `196`
 
 Centro de custo: `Regra ADM`
 
-### Resumo
+#### Resumo
 
 | Critério        | Valores       |
 | --------------- | ------------- |
@@ -156,7 +158,7 @@ Centro de custo: `Regra ADM`
 
 ---
 
-## Regulatório e Benefícios
+### Regulatório e Benefícios
 
 Pacotes: `61,622`
 
@@ -166,7 +168,7 @@ Fornecedor excluído: `31248`
 
 Centro de custo: `Regra ADM`
 
-### Resumo
+#### Resumo
 
 | Critério            | Valores   |
 | ------------------- | --------- |
@@ -177,7 +179,7 @@ Centro de custo: `Regra ADM`
 
 ---
 
-## Transporte e Logística
+### Transporte e Logística
 
 Pacote: `67`
 
@@ -187,7 +189,7 @@ Filiais: `196,99`
 
 Centro de custo: `Regra ADM`
 
-### Resumo
+#### Resumo
 
 | Critério         | Valores   |
 | ---------------- | --------- |
@@ -198,7 +200,7 @@ Centro de custo: `Regra ADM`
 
 ---
 
-## Residual Administrativo
+### Residual Administrativo
 
 Pacotes excluídos:
 
@@ -221,7 +223,7 @@ from cadastro.pacote
 where despesa = 0
 ```
 
-### Resumo
+#### Resumo
 
 | Critério          | Valores                                                 |
 | ----------------- | ------------------------------------------------------- |
@@ -231,7 +233,7 @@ where despesa = 0
 
 ---
 
-# Filtros finais da view
+## Filtros finais da view
 
 Classificações consideradas:
 
@@ -242,7 +244,7 @@ Categoria excluída: `PIS/COFINS`
 
 ---
 
-# Tratamento do documento
+## Tratamento do documento
 
 ```sql
 SUBSTRING_INDEX(
@@ -252,7 +254,7 @@ SUBSTRING_INDEX(
 
 ---
 
-# Agrupamento final
+## Agrupamento final
 
 ```sql
 periodo,
