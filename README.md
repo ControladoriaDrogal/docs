@@ -13,17 +13,6 @@ Toda documentação funcional/técnicas, critérios, regras, memórias de cálcu
 
 ---
 
-# Estrutura de Documentação
-
-## Contábil
-
-Documentações de Views:
-
-- Contábil
-  - [gmd_administrativo (Orçado e Realizado)](MySQL/Contábil/contabil.gmd_administrativo.md)
-
-<br><br>
-
 ## Documentações disponíveis
 
 ### Contábil
